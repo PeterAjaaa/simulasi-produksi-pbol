@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="simulasi.produksi.WorkSession.NewWorkSessionFormController">
+   <children>
+      <GridPane prefHeight="600.0" prefWidth="500.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Add New Work Session Data" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <ComboBox fx:id="ProductMadeSelector" maxWidth="150.0" prefWidth="150.0" promptText="Select Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label text="Products Made:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <TextField fx:id="StartTime" maxWidth="150.0" prefWidth="150.0" promptText="Working Hour Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label text="Start Time:" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label text="End Time:" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Label GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <ComboBox fx:id="WorkerInvolvedSelector" maxWidth="200.0" prefWidth="185.0" promptText="Select Worker Here" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+            <Button fx:id="ResetButton" mnemonicParsing="false" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+            <Button fx:id="SubmitButton" mnemonicParsing="false" text="Submit" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+            <TextField fx:id="EndTime" maxWidth="150.0" prefWidth="150.0" promptText="Working Hour Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button fx:id="AddWorkerButton" mnemonicParsing="false" text="Add" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Label text="Worker Involved:" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <TextField fx:id="WorkerInvolvedDisplay" editable="false" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+            <Label text="Workers Selected:" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP" />
+            <TextArea fx:id="WorkSessionOutput" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="9" GridPane.rowSpan="3" />
+            <Label text="Output" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <MenuBar fx:id="NavigationMenu" GridPane.columnSpan="2" GridPane.valignment="TOP">
+              <menus>
+                <Menu mnemonicParsing="false" text="Create">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Add New Worker" />
+                        <MenuItem mnemonicParsing="false" text="Add New Tool" />
+                    <MenuItem mnemonicParsing="false" text="Add New Product" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Update">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Update Worker" />
+                        <MenuItem mnemonicParsing="false" text="Update Tool" />
+                        <MenuItem mnemonicParsing="false" text="Update Product" />
+                     </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Delete">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete Worker" />
+                        <MenuItem mnemonicParsing="false" text="Delete Tool" />
+                        <MenuItem mnemonicParsing="false" text="Delete Product" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
