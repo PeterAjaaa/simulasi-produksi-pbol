@@ -30,6 +30,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <TextField fx:id="ToolID" maxWidth="150.0" promptText="Tool ID Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
             <Label text="Add New Tool Data" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="24.0" />
@@ -51,50 +56,31 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Button fx:id="ResetButton" mnemonicParsing="false" onAction="#resetData" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <Button mnemonicParsing="false" onAction="#resetData" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="SubmitButton" mnemonicParsing="false" onAction="#saveData" text="Submit" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <Button mnemonicParsing="false" onAction="#saveData" text="Submit" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <font>
                   <Font size="14.0" />
                </font></Button>
             <ComboBox fx:id="ToolAvailabilitySelector" prefWidth="150.0" promptText="Select Availability Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-            <MenuBar fx:id="NavigationMenu" GridPane.columnSpan="2" GridPane.valignment="TOP">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Create">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Add New Worker" />
-                        <MenuItem mnemonicParsing="false" text="Add New Tool" />
-                        <MenuItem mnemonicParsing="false" text="Add New Product" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Update">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update Worker" />
-                        <MenuItem mnemonicParsing="false" text="Update Tool" />
-                        <MenuItem mnemonicParsing="false" text="Update Product" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Delete">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Delete Worker" />
-                        <MenuItem mnemonicParsing="false" text="Delete Tool" />
-                        <MenuItem mnemonicParsing="false" text="Delete Product" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
             <Label text="Tool ID:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="ToolID" maxWidth="150.0" promptText="Tool ID Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
+            <MenuBar GridPane.columnSpan="2" GridPane.valignment="TOP">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Show">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Show Worker" />
+                        <MenuItem mnemonicParsing="false" text="Show Tool" />
+                        <MenuItem mnemonicParsing="false" text="Show Product" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
          </children>
       </GridPane>
    </children>

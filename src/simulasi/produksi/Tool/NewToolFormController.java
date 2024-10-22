@@ -5,8 +5,6 @@
 package simulasi.produksi.Tool;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -14,12 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import simulasi.produksi.Constant.Availability;
+import simulasi.produksi.Constant.EquipmentData;
 
 /**
  * FXML Controller class
@@ -29,17 +27,11 @@ import javafx.stage.Stage;
 public class NewToolFormController implements Initializable {
 
     @FXML
-    private Button SubmitButton;
-    @FXML
     private TextField ToolName;
     @FXML
     private ComboBox<String> ToolTypeSelector;
     @FXML
-    private Button ResetButton;
-    @FXML
     private ComboBox<String> ToolAvailabilitySelector;
-    @FXML
-    private MenuBar NavigationMenu;
     @FXML
     private TextField ToolID;
 
@@ -47,30 +39,14 @@ public class NewToolFormController implements Initializable {
 
     boolean editdata;
 
-    public Map<String, Integer> equipmentData = new LinkedHashMap<>();
-
-    List<String> availability = Arrays.asList(
-            "Ready",
-            "Maintenance",
-            "Disabled"
-    );
+    Map<String, Integer> equipmentData = new EquipmentData().equipmentData;
+    List<String> availability = new Availability().availability;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        equipmentData.put("3D Printer", 85);
-        equipmentData.put("CNC Machine", 80);
-        equipmentData.put("Assembly Robots", 75);
-        equipmentData.put("VR Design Station", 70);
-        equipmentData.put("Laser Cutter", 70);
-        equipmentData.put("Testing Station", 65);
-        equipmentData.put("Calibration Equipment", 65);
-        equipmentData.put("Electronic Workbench", 60);
-        equipmentData.put("Inventory Management System", 55);
-        equipmentData.put("Paint Booths", 50);
-
         for (String item : equipmentData.keySet()) {
             ToolTypeSelector.getItems().add(item);
         }
@@ -137,7 +113,6 @@ public class NewToolFormController implements Initializable {
         ToolName.requestFocus();
     }
 
-    @FXML
     private void closeWindow() {
         Stage stage = (Stage) ToolID.getScene().getWindow();
         stage.close();

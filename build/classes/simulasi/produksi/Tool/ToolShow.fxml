@@ -35,7 +35,7 @@
                <font>
                   <Font size="24.0" />
                </font></Label>
-            <MenuBar fx:id="NavigationMenu" GridPane.columnSpan="3" GridPane.valignment="TOP">
+            <MenuBar GridPane.columnSpan="3" GridPane.valignment="TOP">
                <menus>
                   <Menu mnemonicParsing="false" text="Show">
                      <items>
@@ -55,7 +55,7 @@
                   <TableColumn prefWidth="75.0" text="Efficiency" />
               </columns>
             </TableView>
-            <Button fx:id="AddNewToolButton" mnemonicParsing="false" onAction="#addData" text="Add New Tool" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#addData" text="Add New Tool" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#deleteData" text="Delete Selected" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#updateData" text="Update Selected" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
          </children>

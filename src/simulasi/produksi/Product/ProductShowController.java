@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package simulasi.produksi.Tool;
+package simulasi.produksi.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,23 +21,22 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import simulasi.produksi.Tool.Tool;
 
 /**
  * FXML Controller class
  *
  * @author Peter
  */
-public class ToolShowController implements Initializable {
+public class ProductShowController implements Initializable {
 
     @FXML
-    private TableView<Tool> ToolTableView;
+    private TableView<Product> ProductTableView;
 
-    public static ToolDB toolData = new ToolDB();
+    public static ProductDB productData = new ProductDB();
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -45,36 +44,40 @@ public class ToolShowController implements Initializable {
     }
 
     private void showData() {
-        ObservableList<Tool> data = NewToolFormController.toolData.loadData();
+        ObservableList<Product> data = NewProductFormController.productData.loadData();
         if (data != null) {
-            ToolTableView.getColumns().clear();
-            ToolTableView.getItems().clear();
+            ProductTableView.getColumns().clear();
+            ProductTableView.getItems().clear();
             TableColumn col = new TableColumn("ID");
             col.setCellValueFactory(new PropertyValueFactory<Tool, String>("ID"));
-            ToolTableView.getColumns().addAll(col);
+            ProductTableView.getColumns().addAll(col);
             col = new TableColumn("Name");
             col.setCellValueFactory(new PropertyValueFactory<Tool, String>("name"));
-            ToolTableView.getColumns().addAll(col);
-            col = new TableColumn("Type");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, String>("type"));
-            ToolTableView.getColumns().addAll(col);
-            col = new TableColumn("Availability");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, String>("availability"));
-            col = new TableColumn("Efficiency");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, Integer>("efficiency"));
-            ToolTableView.getColumns().addAll(col);
-            ToolTableView.setItems(data);
+            ProductTableView.getColumns().addAll(col);
+            col = new TableColumn("Required Tool");
+            col.setCellValueFactory(new PropertyValueFactory<Tool, String>("requiredTool"));
+            ProductTableView.getColumns().addAll(col);
+            col = new TableColumn("Product Type");
+            col.setCellValueFactory(new PropertyValueFactory<Tool, String>("productType"));
+            ProductTableView.getColumns().addAll(col);
+            col = new TableColumn("Production Time");
+            col.setCellValueFactory(new PropertyValueFactory<Tool, Integer>("productionTime"));
+            ProductTableView.getColumns().addAll(col);
+            col = new TableColumn("Production Rate");
+            col.setCellValueFactory(new PropertyValueFactory<Tool, Integer>("productionRate"));
+            ProductTableView.getColumns().addAll(col);
+            ProductTableView.setItems(data);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
             alert.showAndWait();
-            ToolTableView.getScene().getWindow().hide();
+            ProductTableView.getScene().getWindow().hide();
         }
     }
 
     @FXML
-    public void addData(ActionEvent event) {
+    private void addData(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewToolForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewProductForm.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
@@ -91,11 +94,11 @@ public class ToolShowController implements Initializable {
 
     @FXML
     private void deleteData(ActionEvent event) {
-        Tool selectedData = ToolTableView.getSelectionModel().getSelectedItem();
+        Product selectedData = ProductTableView.getSelectionModel().getSelectedItem();
         Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Deletion", ButtonType.YES, ButtonType.NO);
         a.showAndWait();
         if (a.getResult() == ButtonType.YES) {
-            if (ToolShowController.toolData.deleteData(selectedData.getID())) {
+            if (ProductShowController.productData.deleteData(selectedData.getID())) {
                 Alert b = new Alert(Alert.AlertType.INFORMATION, "Data berhasil dihapus", ButtonType.OK);
                 b.showAndWait();
             } else {
@@ -108,14 +111,14 @@ public class ToolShowController implements Initializable {
 
     @FXML
     private void updateData(ActionEvent event) {
-        Tool selectedData = ToolTableView.getSelectionModel().getSelectedItem();
+        Product selectedData = ProductTableView.getSelectionModel().getSelectedItem();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewToolForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewProductForm.fxml"));
             Parent root = (Parent) loader.load();
-            NewToolFormController newToolController = (NewToolFormController) loader.getController();
-            newToolController.getToolID().setEditable(false);
-            newToolController.getToolID().setDisable(true);
-            newToolController.execute(selectedData);
+            NewProductFormController newProductController = (NewProductFormController) loader.getController();
+            newProductController.getProductID().setEditable(false);
+            newProductController.getProductID().setDisable(true);
+            newProductController.execute(selectedData);
             Scene scene = new Scene(root);
             Stage stg = new Stage();
             stg.initModality(Modality.APPLICATION_MODAL);
@@ -128,5 +131,4 @@ public class ToolShowController implements Initializable {
         }
         showData();
     }
-
 }
