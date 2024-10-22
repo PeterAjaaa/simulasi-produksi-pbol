@@ -4,17 +4,23 @@
  */
 package simulasi.produksi.Product;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import simulasi.produksi.Constant.EquipmentData;
 import simulasi.produksi.Constant.ProductType;
 
 /**
@@ -23,7 +29,6 @@ import simulasi.produksi.Constant.ProductType;
  * @author Peter
  */
 public class NewProductFormController implements Initializable {
-
     @FXML
     private TextField ProductName;
     @FXML
@@ -40,6 +45,7 @@ public class NewProductFormController implements Initializable {
     public static ProductDB productData = new ProductDB();
     boolean editdata;
     Map<String, Integer> productType = new ProductType().productType;
+    Map<String, Integer> equipmentData = new EquipmentData().equipmentData;
     
     public TextField getProductID() {
         return ProductID;
@@ -52,6 +58,10 @@ public class NewProductFormController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         for (String item : productType.keySet()) {
             ProductType.getItems().add(item);
+        }
+        
+        for (String item: equipmentData.keySet()) {
+            RequiredToolsSelector.getItems().add(item);
         }
     }
 
@@ -118,5 +128,55 @@ public class NewProductFormController implements Initializable {
         Stage stage = (Stage) ProductID.getScene().getWindow();
         stage.close();
     }
-
+    
+    @FXML
+    public void openToolShowWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/simulasi/produksi/Tool/ToolShow.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void openProductShowWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/simulasi/produksi/ProductShow.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void openWorkerShowWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/simulasi/produksi/Worker/WorkerShow.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

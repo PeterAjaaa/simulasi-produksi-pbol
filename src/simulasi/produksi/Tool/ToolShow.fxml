@@ -39,9 +39,9 @@
                <menus>
                   <Menu mnemonicParsing="false" text="Show">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Show Worker" />
-                        <MenuItem mnemonicParsing="false" text="Show Tool" />
-                        <MenuItem mnemonicParsing="false" text="Show Product" />
+                        <MenuItem mnemonicParsing="false" onAction="#openWorkerShowWindow" text="Show Worker" />
+                        <MenuItem mnemonicParsing="false" onAction="#openToolShowWindow" text="Show Tool" />
+                        <MenuItem mnemonicParsing="false" onAction="#openProductShowWindow" text="Show Product" />
                      </items>
                   </Menu>
                </menus>
