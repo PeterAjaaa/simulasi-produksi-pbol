@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package simulasi.produksi.Product;
+package simulasi.produksi.Worker;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,19 +21,17 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import simulasi.produksi.Tool.Tool;
 
 /**
  * FXML Controller class
  *
  * @author Peter
  */
-public class ProductShowController implements Initializable {
-
+public class WorkerShowController implements Initializable {
     @FXML
-    private TableView<Product> ProductTableView;
-
-    public static ProductDB productData = new ProductDB();
+    private TableView<Worker> WorkerTableView;
+    
+    public static WorkerDB workerData = new WorkerDB();
 
     /**
      * Initializes the controller class.
@@ -44,40 +42,37 @@ public class ProductShowController implements Initializable {
     }
 
     private void showData() {
-        ObservableList<Product> data = NewProductFormController.productData.loadData();
+        ObservableList<Worker> data = NewWorkerFormController.workerData.loadData();
         if (data != null) {
-            ProductTableView.getColumns().clear();
-            ProductTableView.getItems().clear();
+            WorkerTableView.getColumns().clear();
+            WorkerTableView.getItems().clear();
             TableColumn col = new TableColumn("ID");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, String>("ID"));
-            ProductTableView.getColumns().addAll(col);
+            col.setCellValueFactory(new PropertyValueFactory<Worker, String>("ID"));
+            WorkerTableView.getColumns().addAll(col);
             col = new TableColumn("Name");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, String>("name"));
-            ProductTableView.getColumns().addAll(col);
-            col = new TableColumn("Required Tool");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, String>("requiredTool"));
-            ProductTableView.getColumns().addAll(col);
-            col = new TableColumn("Product Type");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, String>("productType"));
-            ProductTableView.getColumns().addAll(col);
-            col = new TableColumn("Production Time");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, Integer>("productionTime"));
-            ProductTableView.getColumns().addAll(col);
-            col = new TableColumn("Production Rate");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, Integer>("productionRate"));
-            ProductTableView.getColumns().addAll(col);
-            ProductTableView.setItems(data);
+            col.setCellValueFactory(new PropertyValueFactory<Worker, String>("name"));
+            WorkerTableView.getColumns().addAll(col);
+            col = new TableColumn("Proficiency");
+            col.setCellValueFactory(new PropertyValueFactory<Worker, String>("proficiency"));
+            WorkerTableView.getColumns().addAll(col);
+            col = new TableColumn("Work Hours");
+            col.setCellValueFactory(new PropertyValueFactory<Worker, String>("work_hours"));
+            WorkerTableView.getColumns().addAll(col);
+            col = new TableColumn("Availability");
+            col.setCellValueFactory(new PropertyValueFactory<Worker, Integer>("availability"));
+            WorkerTableView.getColumns().addAll(col);
+            WorkerTableView.setItems(data);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
             alert.showAndWait();
-            ProductTableView.getScene().getWindow().hide();
+            WorkerTableView.getScene().getWindow().hide();
         }
     }
 
     @FXML
     private void addData(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewProductForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewWorkerForm.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
@@ -94,11 +89,11 @@ public class ProductShowController implements Initializable {
 
     @FXML
     private void deleteData(ActionEvent event) {
-        Product selectedData = ProductTableView.getSelectionModel().getSelectedItem();
+        Worker selectedData = WorkerTableView.getSelectionModel().getSelectedItem();
         Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Confirm Deletion", ButtonType.YES, ButtonType.NO);
         a.showAndWait();
         if (a.getResult() == ButtonType.YES) {
-            if (ProductShowController.productData.deleteData(selectedData.getID())) {
+            if (WorkerShowController.workerData.deleteData(selectedData.getID())) {
                 Alert b = new Alert(Alert.AlertType.INFORMATION, "Data berhasil dihapus", ButtonType.OK);
                 b.showAndWait();
             } else {
@@ -111,14 +106,14 @@ public class ProductShowController implements Initializable {
 
     @FXML
     private void updateData(ActionEvent event) {
-        Product selectedData = ProductTableView.getSelectionModel().getSelectedItem();
+        Worker selectedData = WorkerTableView.getSelectionModel().getSelectedItem();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewProductForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NewWorkerForm.fxml"));
             Parent root = (Parent) loader.load();
-            NewProductFormController newProductController = (NewProductFormController) loader.getController();
-            newProductController.getProductID().setEditable(false);
-            newProductController.getProductID().setDisable(true);
-            newProductController.execute(selectedData);
+            NewWorkerFormController newWorkerFormController = (NewWorkerFormController) loader.getController();
+            newWorkerFormController.getWorkerID().setEditable(false);
+            newWorkerFormController.getWorkerID().setDisable(true);
+            newWorkerFormController.execute(selectedData);
             Scene scene = new Scene(root);
             Stage stg = new Stage();
             stg.initModality(Modality.APPLICATION_MODAL);
@@ -131,7 +126,7 @@ public class ProductShowController implements Initializable {
         }
         showData();
     }
-    
+
     @FXML
     public void openToolShowWindow() {
         try {
@@ -148,7 +143,7 @@ public class ProductShowController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
     public void openProductShowWindow() {
         try {
@@ -165,7 +160,7 @@ public class ProductShowController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
     public void openWorkerShowWindow() {
         try {
@@ -182,4 +177,5 @@ public class ProductShowController implements Initializable {
             e.printStackTrace();
         }
     }
+
 }

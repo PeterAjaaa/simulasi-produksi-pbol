@@ -149,7 +149,7 @@ public class NewProductFormController implements Initializable {
     @FXML
     public void openProductShowWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/simulasi/produksi/ProductShow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/simulasi/produksi/Product/ProductShow.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
