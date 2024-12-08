@@ -3,10 +3,10 @@ package simulasi.produksi.WorkSession;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.UUID; // Import UUID for generating unique IDs
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -91,29 +91,6 @@ public class NewWorkSessionFormController implements Initializable {
         return workers;
     }
 
-    public String getWorkerNameById(String workerId) {
-        String workerName = "";
-        DBConnection dbConnection = new DBConnection();
-
-        try {
-            dbConnection.bukaKoneksi();
-            String query = "SELECT name FROM worker WHERE id = ?";
-            dbConnection.preparedStatement = dbConnection.dbConnection.prepareStatement(query);
-            dbConnection.preparedStatement.setString(1, workerId);
-
-            ResultSet rs = dbConnection.preparedStatement.executeQuery();
-            if (rs.next()) {
-                workerName = rs.getString("name");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            dbConnection.closeConnection();
-        }
-
-        return workerName;
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         List<Product> products = getAllProducts();
@@ -177,58 +154,49 @@ public class NewWorkSessionFormController implements Initializable {
         Product selectedProduct = ProductMadeSelector.getValue();
 
         if (selectedProduct != null && !selectedWorkers.isEmpty()) {
-            List<String> workerIds = selectedWorkers.stream()
+            String workSessionId = UUID.randomUUID().toString();
+            String workerIds = selectedWorkers.stream()
                     .map(Worker::getID)
-                    .collect(Collectors.toList());
-            saveWorkSession(
+                    .collect(Collectors.joining(", "));
+
+            boolean isSaved = saveWorkSession(
+                    workSessionId,
                     selectedProduct.getID(),
                     workerIds,
                     StartTime.getText(),
                     EndTime.getText()
             );
+
+            if (isSaved) {
+                showAlert("Work session saved successfully!"); // Show success message
+            }
         } else {
             showAlert("Please select a product and at least one worker");
         }
     }
 
-    private void saveWorkSession(String productId, List<String> workerIds, String startTime, String endTime) {
+    private boolean saveWorkSession(String workSessionId, String productId, String workerIds, String startTime, String endTime) {
         DBConnection dbConnection = new DBConnection();
         try {
             dbConnection.bukaKoneksi();
 
-            String query = "INSERT INTO work_session (product_made, start_time, end_time) VALUES (?, ?, ?)";
-            dbConnection.preparedStatement = dbConnection.dbConnection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            String query = "INSERT INTO work_session (id, products_made, start_time, end_time, worker_involved) VALUES (?, ?, ?, ?, ?)";
+            dbConnection.preparedStatement = dbConnection.dbConnection.prepareStatement(query);
 
-            dbConnection.preparedStatement.setString(1, productId);
-            dbConnection.preparedStatement.setString(2, startTime);
-            dbConnection.preparedStatement.setString(3, endTime);
+            dbConnection.preparedStatement.setString(1, workSessionId);
+            dbConnection.preparedStatement.setString(2, productId);
+            dbConnection.preparedStatement.setString(3, startTime);
+            dbConnection.preparedStatement.setString(4, endTime);
+            dbConnection.preparedStatement.setString(5, workerIds);
 
             int affectedRows = dbConnection.preparedStatement.executeUpdate();
-
-            if (affectedRows > 0) {
-                ResultSet generatedKeys = dbConnection.preparedStatement.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    int workSessionId = generatedKeys.getInt(1);
-                    insertWorkerWorkSession(workSessionId, workerIds);
-                }
-            }
+            return affectedRows > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert("Error saving work session: " + e.getMessage());
+            return false;
         } finally {
             dbConnection.closeConnection();
-        }
-    }
-
-    private void insertWorkerWorkSession(int workSessionId, List<String> workerIds) throws SQLException {
-        DBConnection dbConnection = new DBConnection();
-        String query = "INSERT INTO worker_work_sessions (work_session_id, worker_id) VALUES (?, ?)";
-
-        for (String workerId : workerIds) {
-            dbConnection.preparedStatement = dbConnection.dbConnection.prepareStatement(query);
-            dbConnection.preparedStatement.setInt(1, workSessionId);
-            dbConnection.preparedStatement.setString(2, workerId);
-            dbConnection.preparedStatement.executeUpdate();
         }
     }
 
