@@ -52,8 +52,7 @@
                 <TableColumn prefWidth="102.0" text="Name" />
                   <TableColumn prefWidth="75.0" text="Required Tool" />
                   <TableColumn prefWidth="75.0" text="Type" />
-                  <TableColumn prefWidth="110.0" text="Production Time" />
-                  <TableColumn prefWidth="89.0" text="Production Rate" />
+                  <TableColumn prefWidth="274.0" text="Production Time" />
               </columns>
             </TableView>
             <Button mnemonicParsing="false" onAction="#addData" text="Add New Product" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />

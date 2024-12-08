@@ -63,9 +63,6 @@ public class ProductShowController implements Initializable {
             col = new TableColumn("Production Time");
             col.setCellValueFactory(new PropertyValueFactory<Tool, Integer>("productionTime"));
             ProductTableView.getColumns().addAll(col);
-            col = new TableColumn("Production Rate");
-            col.setCellValueFactory(new PropertyValueFactory<Tool, Integer>("productionRate"));
-            ProductTableView.getColumns().addAll(col);
             ProductTableView.setItems(data);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);

@@ -18,7 +18,7 @@ public class SimulasiProduksi extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Worker/WorkerShow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("WorkSession/NewWorkSessionForm.fxml"));
         
         Scene scene = new Scene(root);
         

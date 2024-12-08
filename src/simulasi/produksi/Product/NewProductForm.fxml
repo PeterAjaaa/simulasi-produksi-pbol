@@ -29,7 +29,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Add New Product Data" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -53,22 +52,14 @@
                   <Font size="14.0" />
                </font></Label>
             <ComboBox fx:id="RequiredToolsSelector" maxWidth="150.0" prefWidth="150.0" promptText="Select Required Tool Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-            <Label text="Production Rate:" GridPane.halignment="CENTER" GridPane.rowIndex="7">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <Button mnemonicParsing="false" onAction="#resetData" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+            <Button mnemonicParsing="false" onAction="#resetData" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#saveData" text="Submit" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+            <Button mnemonicParsing="false" onAction="#saveData" text="Submit" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <TextField fx:id="ProductionRate" maxWidth="150.0" prefWidth="150.0" promptText="Production Rate Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
-               <font>
-                  <Font size="14.0" />
-               </font></TextField>
             <ComboBox fx:id="ProductType" prefWidth="150.0" promptText="Product Type Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <MenuBar GridPane.columnSpan="2" GridPane.valignment="TOP">
                <menus>

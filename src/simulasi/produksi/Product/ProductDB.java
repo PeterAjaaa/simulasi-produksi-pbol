@@ -33,7 +33,7 @@ public class ProductDB {
             DBConnection con = new DBConnection();
             con.bukaKoneksi();
             con.statement = con.dbConnection.createStatement();
-            ResultSet result = con.statement.executeQuery("Select id, name, req_tool, type, prod_time, prod_rate from product");
+            ResultSet result = con.statement.executeQuery("Select id, name, req_tool, type, prod_time from product");
             int i = 1;
             while (result.next()) {
                 Product selectedData = new Product();
@@ -42,7 +42,6 @@ public class ProductDB {
                 selectedData.setRequiredTool(result.getString("req_tool"));
                 selectedData.setProductType(result.getString("type"));
                 selectedData.setProductionTime(result.getInt("prod_time"));
-                selectedData.setProductionRate(result.getInt("prod_rate"));
                 tableData.add(selectedData);
                 i++;
             }
@@ -76,13 +75,12 @@ public class ProductDB {
         DBConnection con = new DBConnection();
         try {
             con.bukaKoneksi();
-            con.preparedStatement = con.dbConnection.prepareStatement("insert into product (id, name, req_tool, type, prod_time, prod_rate) values (?,?,?,?,?,?)");
+            con.preparedStatement = con.dbConnection.prepareStatement("insert into product (id, name, req_tool, type, prod_time) values (?,?,?,?,?)");
             con.preparedStatement.setString(1, getProductModel().getID());
             con.preparedStatement.setString(2, getProductModel().getName());
             con.preparedStatement.setString(3, getProductModel().getRequiredTool());
             con.preparedStatement.setString(4, getProductModel().getProductType());
             con.preparedStatement.setInt(5, getProductModel().getProductionTime());
-            con.preparedStatement.setInt(6, getProductModel().getProductionRate());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -117,12 +115,11 @@ public class ProductDB {
         int rowsAffected;
         try {
             con.bukaKoneksi();
-            con.preparedStatement = con.dbConnection.prepareStatement("update product set name = ?, req_tool = ?, type = ?, prod_time = ?, prod_rate = ?  where  id = ?");
+            con.preparedStatement = con.dbConnection.prepareStatement("update product set name = ?, req_tool = ?, type = ?, prod_time = ?  where  id = ?");
             con.preparedStatement.setString(1, getProductModel().getName());
             con.preparedStatement.setString(2, getProductModel().getRequiredTool());
             con.preparedStatement.setString(3, getProductModel().getProductType());
             con.preparedStatement.setInt(4, getProductModel().getProductionTime());
-            con.preparedStatement.setInt(5, getProductModel().getProductionRate());
             con.preparedStatement.setString(6, getProductModel().getID());
             rowsAffected = con.preparedStatement.executeUpdate();
             berhasil = rowsAffected > 0;

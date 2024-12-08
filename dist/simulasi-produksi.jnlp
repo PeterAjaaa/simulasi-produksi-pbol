@@ -9,7 +9,7 @@
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="lib\mysql-connector-j-9.0.0.jar" size="2590119" download="eager" />
-    <jar href="simulasi-produksi.jar" size="45638" download="eager" />
+    <jar href="simulasi-produksi.jar" size="53935" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="simulasi.produksi.SimulasiProduksi"  name="simulasi-produksi" />
   <update check="always"/>

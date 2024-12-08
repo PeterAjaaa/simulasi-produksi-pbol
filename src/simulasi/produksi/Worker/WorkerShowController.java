@@ -56,7 +56,7 @@ public class WorkerShowController implements Initializable {
             col.setCellValueFactory(new PropertyValueFactory<Worker, String>("proficiency"));
             WorkerTableView.getColumns().addAll(col);
             col = new TableColumn("Work Hours");
-            col.setCellValueFactory(new PropertyValueFactory<Worker, String>("work_hours"));
+            col.setCellValueFactory(new PropertyValueFactory<Worker, String>("workHours"));
             WorkerTableView.getColumns().addAll(col);
             col = new TableColumn("Availability");
             col.setCellValueFactory(new PropertyValueFactory<Worker, Integer>("availability"));

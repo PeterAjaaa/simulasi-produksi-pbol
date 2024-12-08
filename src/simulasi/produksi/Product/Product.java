@@ -11,6 +11,13 @@ package simulasi.produksi.Product;
 public class Product {
     String ID, name, requiredTool, productType;
     int productionTime, productionRate;
+    
+    public Product(){};
+    
+    public Product(String id, String name) {
+        this.ID = id;
+        this.name = name;
+    }
 
     public String getID() {
         return ID;

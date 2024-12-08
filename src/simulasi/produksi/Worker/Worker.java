@@ -11,6 +11,13 @@ package simulasi.produksi.Worker;
 public class Worker {
     String id, name, proficiency, availability;
     int work_hours;
+    
+    public Worker(){};
+    
+    public Worker(String id, String name){
+        this.id = id;
+        this.name = name;
+    }
 
     public String getID() {
         return id;
@@ -52,5 +59,8 @@ public class Worker {
         this.work_hours = work_hours;
     }
     
-    
+    @Override
+    public String toString() {
+        return name;
+    }
 }
