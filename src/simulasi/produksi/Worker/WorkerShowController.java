@@ -28,9 +28,10 @@ import javafx.stage.Stage;
  * @author Peter
  */
 public class WorkerShowController implements Initializable {
+
     @FXML
     private TableView<Worker> WorkerTableView;
-    
+
     public static WorkerDB workerData = new WorkerDB();
 
     /**
@@ -57,9 +58,6 @@ public class WorkerShowController implements Initializable {
             WorkerTableView.getColumns().addAll(col);
             col = new TableColumn("Work Hours");
             col.setCellValueFactory(new PropertyValueFactory<Worker, String>("workHours"));
-            WorkerTableView.getColumns().addAll(col);
-            col = new TableColumn("Availability");
-            col.setCellValueFactory(new PropertyValueFactory<Worker, Integer>("availability"));
             WorkerTableView.getColumns().addAll(col);
             WorkerTableView.setItems(data);
         } else {

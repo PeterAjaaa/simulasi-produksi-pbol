@@ -20,20 +20,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Constant/Proficiency.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Constant/ProductType.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Tool/ToolShowController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Worker/WorkerShowController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Tool/NewToolFormController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Product/NewProductFormController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Worker/Worker.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Constant/WorkerAvailability.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Constant/Availability.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Worker/WorkerDB.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Product/ProductShowController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/WorkSession/NewWorkSessionForm.fxml</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/utility/DBConnection.java</file>
             <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Product/Product.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/SimulasiProduksi.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Worker/NewWorkerFormController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/WorkSession/WorkSessionDB.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/WorkSession/WorkSession.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/WorkSession/NewWorkSessionFormController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/simulasi-produksi/src/simulasi/produksi/Product/ProductDB.java</file>
         </group>
     </open-files>
 </project-private>

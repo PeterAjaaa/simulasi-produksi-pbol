@@ -33,7 +33,7 @@ public class WorkerDB {
             DBConnection con = new DBConnection();
             con.bukaKoneksi();
             con.statement = con.dbConnection.createStatement();
-            ResultSet result = con.statement.executeQuery("Select id, name, proficiency, work_hours, availability from worker");
+            ResultSet result = con.statement.executeQuery("Select id, name, proficiency, work_hours from worker");
             int i = 1;
             while (result.next()) {
                 Worker selectedData = new Worker();
@@ -41,7 +41,6 @@ public class WorkerDB {
                 selectedData.setName(result.getString("name"));
                 selectedData.setProficiency(result.getString("proficiency"));
                 selectedData.setWorkHours(result.getInt("work_hours"));
-                selectedData.setAvailability(result.getString("availability"));
                 tableData.add(selectedData);
                 i++;
             }
@@ -75,12 +74,11 @@ public class WorkerDB {
         DBConnection con = new DBConnection();
         try {
             con.bukaKoneksi();
-            con.preparedStatement = con.dbConnection.prepareStatement("insert into worker (id, name, proficiency, work_hours, availability) values (?,?,?,?,?)");
+            con.preparedStatement = con.dbConnection.prepareStatement("insert into worker (id, name, proficiency, work_hours) values (?,?,?,?)");
             con.preparedStatement.setString(1, getWorkerModel().getID());
             con.preparedStatement.setString(2, getWorkerModel().getName());
             con.preparedStatement.setString(3, getWorkerModel().getProficiency());
             con.preparedStatement.setInt(4, getWorkerModel().getWorkHours());
-            con.preparedStatement.setString(5, getWorkerModel().getAvailability());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -115,11 +113,10 @@ public class WorkerDB {
         int rowsAffected;
         try {
             con.bukaKoneksi();
-            con.preparedStatement = con.dbConnection.prepareStatement("update worker set name = ?, proficiency = ?, work_hours = ?, availability = ?  where  id = ?");
+            con.preparedStatement = con.dbConnection.prepareStatement("update worker set name = ?, proficiency = ?, work_hours = ?,  where  id = ?");
             con.preparedStatement.setString(1, getWorkerModel().getName());
             con.preparedStatement.setString(2, getWorkerModel().getProficiency());
             con.preparedStatement.setInt(3, getWorkerModel().getWorkHours());
-            con.preparedStatement.setString(4, getWorkerModel().getAvailability());
             con.preparedStatement.setString(5, getWorkerModel().getID());
             rowsAffected = con.preparedStatement.executeUpdate();
             berhasil = rowsAffected > 0;

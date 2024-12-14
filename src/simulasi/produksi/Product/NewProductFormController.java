@@ -34,8 +34,6 @@ public class NewProductFormController implements Initializable {
     @FXML
     private ComboBox<String> RequiredToolsSelector;
     @FXML
-    private TextField ProductionRate;
-    @FXML
     private ComboBox<String> ProductType;
     @FXML
     private TextField ProductID;
@@ -73,7 +71,6 @@ public class NewProductFormController implements Initializable {
             RequiredToolsSelector.setValue(data.getRequiredTool());
             ProductType.setValue(data.getProductType());
             ProductionTime.setText(String.valueOf(data.getProductionTime()));
-            ProductionRate.setText(String.valueOf(data.getProductionRate()));
             ProductID.requestFocus();
         }
     }
@@ -86,7 +83,6 @@ public class NewProductFormController implements Initializable {
         newData.setRequiredTool(RequiredToolsSelector.getSelectionModel().getSelectedItem());
         newData.setProductType(ProductType.getSelectionModel().getSelectedItem());
         newData.setProductionTime(Integer.parseInt(ProductionTime.getText()));
-        newData.setProductionRate(Integer.parseInt(ProductionRate.getText()));
         System.out.println(newData.getID());
         ProductShowController.productData.setProductModel(newData);
 
@@ -120,7 +116,6 @@ public class NewProductFormController implements Initializable {
         RequiredToolsSelector.setValue(null);
         ProductType.setValue(null);
         ProductionTime.setText(null);
-        ProductionRate.setText(null);
         ProductID.requestFocus();
     }
 

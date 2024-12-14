@@ -21,7 +21,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import simulasi.produksi.Constant.Availability;
 import simulasi.produksi.Constant.Proficiency;
 
 /**
@@ -37,8 +36,6 @@ public class NewWorkerFormController implements Initializable {
     private ComboBox<String> WorkerProficiencySelector;
     @FXML
     private TextField WorkerHour;
-    @FXML
-    private ComboBox<String> WorkerAvailablity;
     @FXML
     private Button SubmitButton;
     @FXML
@@ -62,10 +59,6 @@ public class NewWorkerFormController implements Initializable {
         for (String item : proficiency.keySet()) {
             WorkerProficiencySelector.getItems().add(item);
         }
-
-        for (String item : new Availability().availability) {
-            WorkerAvailablity.getItems().add(item);
-        }
     }
 
     public void execute(Worker data) {
@@ -75,7 +68,6 @@ public class NewWorkerFormController implements Initializable {
             WorkerName.setText(data.getName());
             WorkerProficiencySelector.setValue(data.getProficiency());
             WorkerHour.setText(String.valueOf(data.getWorkHours()));
-            WorkerAvailablity.setValue(data.getAvailability());
             WorkerID.requestFocus();
         }
     }
@@ -87,8 +79,6 @@ public class NewWorkerFormController implements Initializable {
         newData.setName(WorkerName.getText());
         newData.setProficiency(WorkerProficiencySelector.getSelectionModel().getSelectedItem());
         newData.setWorkHours(Integer.parseInt(WorkerHour.getText()));
-        newData.setAvailability(WorkerAvailablity.getSelectionModel().getSelectedItem());
-        System.out.println(newData.getID());
         WorkerShowController.workerData.setWorkerModel(newData);
 
         if (editdata) {
@@ -120,7 +110,6 @@ public class NewWorkerFormController implements Initializable {
         WorkerName.setText(null);
         WorkerProficiencySelector.setValue(null);
         WorkerHour.setText(null);
-        WorkerAvailablity.setValue(null);
         WorkerID.requestFocus();
     }
 

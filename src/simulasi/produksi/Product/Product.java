@@ -9,14 +9,25 @@ package simulasi.produksi.Product;
  * @author Peter
  */
 public class Product {
+
     String ID, name, requiredTool, productType;
     int productionTime, productionRate;
-    
-    public Product(){};
+
+    public Product() {
+    }
+
+    ;
     
     public Product(String id, String name) {
         this.ID = id;
         this.name = name;
+    }
+
+    public Product(String id, String name, String requiredTool, int productionTime) {
+        this.ID = id;
+        this.name = name;
+        this.requiredTool = requiredTool; // Set the required tool
+        this.productionTime = productionTime; // Set the production time
     }
 
     public String getID() {
@@ -66,6 +77,10 @@ public class Product {
     public void setProductionRate(int productionRate) {
         this.productionRate = productionRate;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

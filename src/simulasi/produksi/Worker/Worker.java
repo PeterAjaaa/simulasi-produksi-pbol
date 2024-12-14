@@ -9,14 +9,24 @@ package simulasi.produksi.Worker;
  * @author Peter
  */
 public class Worker {
-    String id, name, proficiency, availability;
+
+    String id, name, proficiency;
     int work_hours;
+
+    public Worker() {
+    }
+
+    ;
     
-    public Worker(){};
-    
-    public Worker(String id, String name){
+    public Worker(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Worker(String id, String name, String proficiency) {
+        this.id = id;
+        this.name = name;
+        this.proficiency = proficiency; // Set proficiency here
     }
 
     public String getID() {
@@ -43,14 +53,6 @@ public class Worker {
         this.proficiency = proficiency;
     }
 
-    public String getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(String availability) {
-        this.availability = availability;
-    }
-
     public int getWorkHours() {
         return work_hours;
     }
@@ -58,7 +60,7 @@ public class Worker {
     public void setWorkHours(int work_hours) {
         this.work_hours = work_hours;
     }
-    
+
     @Override
     public String toString() {
         return name;

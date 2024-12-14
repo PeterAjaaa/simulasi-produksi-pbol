@@ -17,7 +17,7 @@ public class ProductType {
 
     public ProductType() {
         productType.put("Racing Drone", 30);
-        productType.put("Entertaintment Drone", 40);
+        productType.put("Entertainment Drone", 40);
         productType.put("Delivery Drone", 50);
         productType.put("Medical Delivery Drone", 60);
         productType.put("Agricultural Drone", 65);

@@ -28,7 +28,6 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Add New Worker Data" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -50,16 +49,11 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label text="Worker Availability:" GridPane.halignment="CENTER" GridPane.rowIndex="6">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <ComboBox fx:id="WorkerAvailablity" maxWidth="150.0" prefWidth="150.0" promptText="Select Availability Here" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-            <Button fx:id="ResetButton" mnemonicParsing="false" onAction="#resetData" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+            <Button fx:id="ResetButton" mnemonicParsing="false" onAction="#resetData" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="SubmitButton" mnemonicParsing="false" onAction="#saveData" text="Submit" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+            <Button fx:id="SubmitButton" mnemonicParsing="false" onAction="#saveData" text="Submit" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <font>
                   <Font size="14.0" />
                </font></Button>
@@ -74,7 +68,7 @@
                   </Menu>
                </menus>
             </MenuBar>
-            <Label text="Worker Name:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Label text="Worker ID:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
