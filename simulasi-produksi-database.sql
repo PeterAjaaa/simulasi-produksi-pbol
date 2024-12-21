@@ -26,11 +26,15 @@ CREATE TABLE IF NOT EXISTS `product` (
   `req_tool` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `prod_time` int NOT NULL,
-  `prod_rate` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table simulasi-produksi.product: ~4 rows (approximately)
+INSERT IGNORE INTO `product` (`id`, `name`, `req_tool`, `type`, `prod_time`) VALUES
+	('PR001', 'Navy Killer', 'Calibration Equipment', 'Combat Drone', 500),
+	('PR002', 'MedEVAC V2', 'Inventory Management System', 'Medical Delivery Drone', 300),
+	('PR003', 'DroneBuoy2K', 'Electronic Workbench', 'SAR Drone', 720),
+	('PR004', 'AceDefenseSystem Combat Drone', 'Assembly Robots', 'Combat Drone', 1440);
 
 -- Dumping structure for table simulasi-produksi.tool
 CREATE TABLE IF NOT EXISTS `tool` (
@@ -42,7 +46,12 @@ CREATE TABLE IF NOT EXISTS `tool` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table simulasi-produksi.tool: ~4 rows (approximately)
+INSERT IGNORE INTO `tool` (`id`, `name`, `type`, `availability`, `efficiency`) VALUES
+	('T001', 'VAssembly', 'Assembly Robots', 'Ready', 75),
+	('T002', 'Musashi Corp 3D Printer V2', '3D Printer', 'Maintenance', 85),
+	('T003', 'NekoCalibrationSystem', 'Calibration Equipment', 'Ready', 65),
+	('T004', 'OuterInc CNC Machine', 'CNC Machine', 'Ready', 80);
 
 -- Dumping structure for table simulasi-produksi.worker
 CREATE TABLE IF NOT EXISTS `worker` (
@@ -50,11 +59,34 @@ CREATE TABLE IF NOT EXISTS `worker` (
   `name` varchar(50) DEFAULT NULL,
   `proficiency` varchar(50) NOT NULL,
   `work_hours` int NOT NULL,
-  `availability` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table simulasi-produksi.worker: ~5 rows (approximately)
+INSERT IGNORE INTO `worker` (`id`, `name`, `proficiency`, `work_hours`) VALUES
+	('P001', 'Jack', 'Advanced', 8),
+	('P002', 'Tom', 'Intermediate', 6),
+	('P003', 'Ben', 'Beginner', 4),
+	('P004', 'Benny', 'Advanced', 12),
+	('P005', 'Tommy', 'Beginner', 1);
+
+-- Dumping structure for table simulasi-produksi.work_session
+CREATE TABLE IF NOT EXISTS `work_session` (
+  `id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `products_made` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `start_time` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `end_time` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `worker_involved` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_work_session_product` (`products_made`),
+  KEY `FK_work_session_worker` (`worker_involved`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table simulasi-produksi.work_session: ~2 rows (approximately)
+INSERT IGNORE INTO `work_session` (`id`, `products_made`, `start_time`, `end_time`, `worker_involved`) VALUES
+	('185eb037-07a7-4aab-aba8-32f3428ccf62_P001', 'PR002', '16:36', '18:57', 'P001'),
+	('185eb037-07a7-4aab-aba8-32f3428ccf62_P002', 'PR002', '16:36', '18:57', 'P002'),
+	('185eb037-07a7-4aab-aba8-32f3428ccf62_P003', 'PR002', '16:36', '18:57', 'P003');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
